@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31220.234
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Behaviors", "Behaviors\Behaviors\Behaviors.csproj", "{A2A717C5-A249-4070-8C58-F12A4AAF6480}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Behaviors.WinUI", "Behaviors\Behaviors.WinUI\Behaviors.WinUI.csproj", "{483F575C-D5E6-4D70-B0F9-FF66FAA823F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2A717C5-A249-4070-8C58-F12A4AAF6480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2A717C5-A249-4070-8C58-F12A4AAF6480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2A717C5-A249-4070-8C58-F12A4AAF6480}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A2A717C5-A249-4070-8C58-F12A4AAF6480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2A717C5-A249-4070-8C58-F12A4AAF6480}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2A717C5-A249-4070-8C58-F12A4AAF6480}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{483F575C-D5E6-4D70-B0F9-FF66FAA823F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{483F575C-D5E6-4D70-B0F9-FF66FAA823F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{483F575C-D5E6-4D70-B0F9-FF66FAA823F2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{483F575C-D5E6-4D70-B0F9-FF66FAA823F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{483F575C-D5E6-4D70-B0F9-FF66FAA823F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{483F575C-D5E6-4D70-B0F9-FF66FAA823F2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
+	EndGlobalSection
+EndGlobal

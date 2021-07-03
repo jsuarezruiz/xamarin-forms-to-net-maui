@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Behaviors.WinUI": {
+      "commandName": "AppContainer"
+    }
+  }
+}
