@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Triggers.WinUI": {
+      "commandName": "AppContainer"
+    }
+  }
+}
