@@ -68,6 +68,6 @@ namespace Behaviors
 
 _What is the difference?_. The code is exactly the same except for one detail, namespaces.
 
-Xamarin.Forms namespace changes to **Microsoft.Maui.Controls **namespace. 
+Xamarin.Forms namespace changes to **Microsoft.Maui.Controls ** namespace. 
 
 On the other hand, all the basic types such as: Color, Rectangle or Point have become available in **Microsoft.Maui.Graphics**. For that reason, and because using colors in this Behavior we also need this new namespace. 
