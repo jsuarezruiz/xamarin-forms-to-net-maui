@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Compatibility.WinUI": {
+      "commandName": "AppContainer"
+    }
+  }
+}
