@@ -89,7 +89,7 @@ namespace Compatibility.Droid.Renderers
 
 The only changes are replace some namespace to use **Microsoft.Maui.Controls.Compatibility**.
 
-_And is everything is ready? _
+_And is everything is ready?_
 
 Not quite, instead of using assembly scanning, .NET MAUI uses the **Startup** class to perform tasks like registering Handlers or Renderers.
 
