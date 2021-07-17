@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.ComponentModel;
+using Xamarin.Forms;
 
 namespace CustomRenderers
 {
@@ -20,10 +22,10 @@ namespace CustomRenderers
             BindableProperty.Create(nameof(CharacterSpacing), typeof(double), typeof(Entry), 0.0d);
 
         public static readonly BindableProperty HorizontalTextAlignmentProperty =
-            BindableProperty.Create(nameof(HorizontalTextAlignment), typeof(string), typeof(Entry), string.Empty);
+            BindableProperty.Create(nameof(HorizontalTextAlignment), typeof(TextAlignment), typeof(Entry), TextAlignment.Start);
 
         public static readonly BindableProperty VerticalTextAlignmentProperty =
-            BindableProperty.Create(nameof(VerticalTextAlignment), typeof(string), typeof(Entry), string.Empty);
+            BindableProperty.Create(nameof(VerticalTextAlignment), typeof(TextAlignment), typeof(Entry), TextAlignment.Start);
 
         public string Text
         {
@@ -64,6 +66,17 @@ namespace CustomRenderers
         {
             get { return (TextAlignment)GetValue(VerticalTextAlignmentProperty); }
             set { SetValue(VerticalTextAlignmentProperty, value); }
+        }
+
+        public event EventHandler Completed;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public void SendCompleted()
+        {
+            if (IsEnabled)
+            {
+                Completed?.Invoke(this, EventArgs.Empty);
+            }
         }
     }
 }

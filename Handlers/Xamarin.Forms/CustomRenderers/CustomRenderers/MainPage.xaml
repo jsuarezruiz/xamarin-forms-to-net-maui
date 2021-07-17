@@ -6,6 +6,9 @@
     x:Class="CustomRenderers.MainPage"
     Title="Custom Renderers">
     <StackLayout>
-        <customrenderers:CustomEntry />
+        <customrenderers:CustomEntry
+            TextColor="Red"
+            Placeholder="CustomEntry"
+            PlaceholderColor="Green"/>
     </StackLayout>
 </ContentPage>

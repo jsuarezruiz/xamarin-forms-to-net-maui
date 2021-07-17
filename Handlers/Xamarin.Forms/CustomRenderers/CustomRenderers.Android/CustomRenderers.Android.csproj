@@ -58,6 +58,9 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\CharacterSpacingExtensions.cs" />
+    <Compile Include="Extensions\ColorStateListExtensions.cs" />
+    <Compile Include="Extensions\TextAlignmentExtensions.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\CustomEntryRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
