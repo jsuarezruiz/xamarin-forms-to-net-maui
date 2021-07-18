@@ -1,7 +1,7 @@
 ﻿using Android.Content.Res;
 using AColor = Android.Graphics.Color;
 
-namespace CustomRenderers.Droid.Extensions
+namespace CustomHandlers.Platforms.Android
 {
     internal static class ColorStateListExtensions
     {

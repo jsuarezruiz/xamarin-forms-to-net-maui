@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31220.234
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomHandlers", "CustomHandlers\CustomHandlers\CustomHandlers.csproj", "{996F15C4-520C-4B93-AC7C-B01A02C120CB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomHandlers.WinUI", "CustomHandlers\CustomHandlers.WinUI\CustomHandlers.WinUI.csproj", "{0EDD8FB8-6767-42E1-9BEB-7F49D7F687FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{996F15C4-520C-4B93-AC7C-B01A02C120CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{996F15C4-520C-4B93-AC7C-B01A02C120CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{996F15C4-520C-4B93-AC7C-B01A02C120CB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{996F15C4-520C-4B93-AC7C-B01A02C120CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{996F15C4-520C-4B93-AC7C-B01A02C120CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{996F15C4-520C-4B93-AC7C-B01A02C120CB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0EDD8FB8-6767-42E1-9BEB-7F49D7F687FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EDD8FB8-6767-42E1-9BEB-7F49D7F687FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EDD8FB8-6767-42E1-9BEB-7F49D7F687FB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0EDD8FB8-6767-42E1-9BEB-7F49D7F687FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EDD8FB8-6767-42E1-9BEB-7F49D7F687FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EDD8FB8-6767-42E1-9BEB-7F49D7F687FB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
+	EndGlobalSection
+EndGlobal
