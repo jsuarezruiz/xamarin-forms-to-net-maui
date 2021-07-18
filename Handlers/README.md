@@ -130,3 +130,148 @@ _Do you remember the ExportRenderer attribute that you use to register the Rende
 All those **private methods** to update properties of the native control are a big problem. You may need to make a small change and due to lack of access (again, private methods here and there!), you end up creating a Custom Renderer larger than necessary, etc. 
 
 Solving these problems, and other minor ones is the fundamental objective of the Handlers. 
+
+## Custom Handlers
+
+The process for creating the custom handler class is as follows:
+
+1. Create a subclass of the **ViewHandler** class that renders the native control.
+2. Override the **CreateNativeView** method that renders the native control.
+3. Create the **Mapper** dictionary that respond to property changes.
+4. Register the handler using the **AddHandler** method in the Startup class.
+
+
+![Custom Handler](custom-handler.png)
+
+### Creating the Custom Entry Control
+
+Handlers can be accessed through a control-specific interface provided derived from **IView** interface. This avoids the cross-platform control having to reference its handler, and the handler having to reference the cross-platform control. The mapping of the cross-platform control API to the platform API is provided by a mapper.
+
+In this way we start creating the interface that defines our control: 
+
+```
+public interface ICustomEntry : IView
+{
+    public string Text { get; }
+    public Color TextColor { get; }
+    public string Placeholder { get; }
+    public Color PlaceholderColor { get; }
+    public double CharacterSpacing { get; }
+    public TextAlignment HorizontalTextAlignment { get; }
+    public TextAlignment VerticalTextAlignment { get; }
+
+    void Completed();
+}
+```
+
+A custom control can be created by subclassing the View class and implementing the control interface:
+
+```
+public class CustomEntry : View, ICustomEntry
+{
+
+}
+```
+
+### Creating the Custom handler on each Platform
+
+Create a subclass of the **ViewHandler** class that renders the native control.
+
+```
+public partial class CustomEntryHandler : ViewHandler<ICustomEntry, EditText>
+{
+
+}
+```
+
+It seems like a trivial change, we pass from inheriting from ViewRenderer to ViewHandler, but it's much more!.
+
+ViewRenderer in Xamarin.Forms create a parent element, in the case of Android a ViewGroup, which was used for auxiliary positioning tasks. **ViewHandler DOES NOT create any parent** element which helps to reduce the visual hierarchy and therefore, improve the performance. 
+
+Inheriting from ViewHandler, we have to implement the **CreateNativeView** method. 
+
+```
+protected override EditText CreateNativeView()
+{
+    return new EditText(Context);
+}
+```
+
+Do you remember that we previously reviewed how OnElementChanged was used in Xamarin.Forms?. In this method we create the native control, initialize default values, subscribe to events, etc. However, it requires a wide diversity of knowledge: what is OldElement and NewElement, etc. 
+
+.NET MAUI simplifies and distributes everything that we did previously in the OnElementChanged method in different methods in a simpler way. 
+
+We create the native control in the CreateNativeView method. On the other hand, we have other methods like **ConnectHandler** and **DisconnectHandler**. 
+
+```
+protected override void ConnectHandler(EditText nativeView)
+{
+    _defaultTextColors = nativeView.TextColors;
+    _defaultPlaceholderColors = nativeView.HintTextColors;
+
+    _watcher.Handler = this;
+    nativeView.AddTextChangedListener(_watcher);
+
+    base.ConnectHandler(nativeView);
+}
+
+protected override void DisconnectHandler(EditText nativeView)
+{
+    nativeView.RemoveTextChangedListener(_watcher);
+    _watcher.Handler = null;
+
+    base.DisconnectHandler(nativeView);
+}
+```
+
+ConnectHandler is the ideal place to initialize, subscribe events, etc and in the same way we can dispose, unsubscribe events etc in DisconnectHandler. 
+
+### The Mapper
+
+The **Mapper** is a new concept introduced by Handlers. It is nothing more than a dictionary with the properties (and actions) defined in the interface of our control (remember, we use interfaces in the Handler). It replaces everything that was done in the OnElementPropertyChanged method in Xamarin.Forms. 
+
+```
+public static PropertyMapper<ICustomEntry, CustomEntryHandler> CustomEntryMapper = new PropertyMapper<ICustomEntry, CustomEntryHandler>(ViewHandler.ViewMapper)
+{
+    [nameof(ICustomEntry.Text)] = MapText,
+    [nameof(ICustomEntry.TextColor)] = MapTextColor,
+    [nameof(ICustomEntry.Placeholder)] = MapPlaceholder,
+    [nameof(ICustomEntry.PlaceholderColor)] = MapPlaceholderColor,
+    [nameof(ICustomEntry.CharacterSpacing)] = MapCharacterSpacing,
+    [nameof(ICustomEntry.HorizontalLayoutAlignment)] = MapHorizontalLayoutAlignment,
+    [nameof(ICustomEntry.VerticalLayoutAlignment)] = MapVerticalLayoutAlignment
+};
+```
+
+The Mapper maps properties to static methods. 
+
+```
+public static void MapText(CustomEntryHandler handler, ICustomEntry entry)
+{
+    handler.NativeView?.UpdateText(entry);
+}
+```
+
+The Mapper, in addition to simplifying the management of property changes (notifies the properties when initializing the control and also, each time one property changes) allows us more extensibility options. 
+
+For example:
+
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+
+```
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+
+#if __ANDROID__
+        CustomEntryMapper[nameof(ICustomEntry.Text)] = (handler, view) =>
+        {
+            (handler.NativeView as Android.Widget.EditText).Text = view.text + "custom";
+        };
+#endif
+    }
+}
+```
