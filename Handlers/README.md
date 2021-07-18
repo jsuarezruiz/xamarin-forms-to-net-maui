@@ -275,3 +275,20 @@ public partial class App : Application
     }
 }
 ```
+
+### Registering the handler
+
+Unlike Xamarin.Forms using the ExportRenderer attribute which in turn made use of Assembly Scanning, in .NET MAUI the handler registration is slightly different. 
+
+```
+appBuilder
+    .UseMauiApp<App>()
+    .ConfigureMauiHandlers(handlers =>
+    {
+#if __ANDROID__
+        handlers.AddHandler(typeof(CustomEntry), typeof(CustomEntryHandler));
+#endif
+    });
+```
+
+We make use of AppHostBuilder and the **AddHandler** method to register the Handler. In the end, it requires, as in Xamarin.Forms, a line to indicate that we want to register the Handler, but the use of Assembly Scanning is avoided, which is slow and expensive, penalizing startup. 
