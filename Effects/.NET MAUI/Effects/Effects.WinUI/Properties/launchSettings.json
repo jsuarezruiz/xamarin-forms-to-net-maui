@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Effects.WinUI": {
+      "commandName": "MsixPackage"
+    }
+  }
+}
