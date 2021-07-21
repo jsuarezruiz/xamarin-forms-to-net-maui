@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:Effects.Effects"
+    x:Class="Effects.MainPage">
+    <StackLayout>
+        <Label
+            Text="Entry With Focus Routing Effect"/>
+        <Entry 
+            Text="Alert Simple">
+            <Entry.Effects>
+                <effects:FocusRoutingEffect />
+            </Entry.Effects>
+        </Entry>
+    </StackLayout>
+
+</ContentPage>
