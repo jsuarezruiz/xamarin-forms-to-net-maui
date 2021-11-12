@@ -5,25 +5,25 @@ using Microsoft.Maui.Controls.Hosting;
 
 namespace Compatibility
 {
-	public static class MauiProgram
-	{
-		public static MauiApp CreateMauiApp()
-		{
-			var builder = MauiApp.CreateBuilder();
-			builder
-				.UseMauiApp<App>()
-				.ConfigureMauiHandlers(handlers =>
-				{
+    public static class MauiProgram
+    {
+        public static MauiApp CreateMauiApp()
+        {
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>()
+                .ConfigureMauiHandlers(handlers =>
+                {
 #if __ANDROID__
-					handlers.AddCompatibilityRenderer(typeof(CustomEntry), typeof(Platforms.Android.CustomEntryRenderer));
+                    handlers.AddCompatibilityRenderer(typeof(CustomEntry), typeof(Droid.Renderers.CustomEntryRenderer));
 #endif
-				})
-				.ConfigureFonts(fonts =>
-				{
-					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				});
+                })
+                .ConfigureFonts(fonts =>
+                {
+                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                });
 
-			return builder.Build();
-		}
-	}
+            return builder.Build();
+        }
+    }
 }
