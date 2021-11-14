@@ -1,4 +1,6 @@
-﻿using Microsoft.Maui;
+﻿#nullable enable
+
+using Microsoft.Maui;
 using Microsoft.Maui.Handlers;
 
 namespace CustomHandlers.Handlers
