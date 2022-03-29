@@ -15,7 +15,7 @@ namespace CustomHandlers.Handlers
 
         readonly TextWatcher _watcher = new();
 
-        protected override EditText CreateNativeView()
+        protected override EditText CreatePlatformView()
         {
             return new EditText(Context);
         }
@@ -41,37 +41,37 @@ namespace CustomHandlers.Handlers
 
         public static void MapText(CustomEntryHandler handler, ICustomEntry entry)
         {
-            handler.NativeView?.UpdateText(entry);
+            handler.PlatformView?.UpdateText(entry);
         }
 
         public static void MapTextColor(CustomEntryHandler handler, ICustomEntry entry)
         {
-            handler.NativeView?.UpdateTextColor(entry, handler._defaultTextColors);
+            handler.PlatformView?.UpdateTextColor(entry, handler._defaultTextColors);
         }
 
         public static void MapPlaceholder(CustomEntryHandler handler, ICustomEntry entry)
         {
-            handler.NativeView?.UpdatePlaceholder(entry);
+            handler.PlatformView?.UpdatePlaceholder(entry);
         }
 
         public static void MapPlaceholderColor(CustomEntryHandler handler, ICustomEntry entry)
         {
-            handler.NativeView?.UpdatePlaceholderColor(entry, handler._defaultPlaceholderColors);
+            handler.PlatformView?.UpdatePlaceholderColor(entry, handler._defaultPlaceholderColors);
         }
 
         public static void MapCharacterSpacing(CustomEntryHandler handler, ICustomEntry entry)
         {
-            handler.NativeView?.UpdateCharacterSpacing(entry);
+            handler.PlatformView?.UpdateCharacterSpacing(entry);
         }
 
         public static void MapHorizontalLayoutAlignment(CustomEntryHandler handler, ICustomEntry entry)
         {
-            handler.NativeView?.UpdateHorizontalLayoutAlignment(entry);
+            handler.PlatformView?.UpdateHorizontalLayoutAlignment(entry);
         }
 
         public static void MapVerticalLayoutAlignment(CustomEntryHandler handler, ICustomEntry entry)
         {
-            handler.NativeView?.UpdateVerticaLayoutAlignment(entry);
+            handler.PlatformView?.UpdateVerticaLayoutAlignment(entry);
         }
 
         class TextWatcher : Java.Lang.Object, ITextWatcher

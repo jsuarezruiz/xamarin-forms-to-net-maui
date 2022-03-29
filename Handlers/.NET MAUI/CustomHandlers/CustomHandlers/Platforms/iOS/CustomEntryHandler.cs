@@ -7,7 +7,7 @@ namespace CustomHandlers.Handlers
 {
     public partial class CustomEntryHandler : ViewHandler<ICustomEntry, UIView>
     {
-        protected override UIView CreateNativeView() => throw new NotImplementedException();
+        protected override UIView CreatePlatformView() => throw new NotImplementedException();
 
         [MissingMapper]
         public static void MapText(CustomEntryHandler handler, ICustomEntry entry) { }

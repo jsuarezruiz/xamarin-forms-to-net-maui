@@ -3,6 +3,7 @@ using Android.Content.Res;
 using Android.Widget;
 using CustomHandlers.Handlers;
 using Microsoft.Maui;
+using Microsoft.Maui.Platform;
 using AResource = Android.Resource;
 
 namespace CustomHandlers.Platforms.Android
@@ -31,7 +32,7 @@ namespace CustomHandlers.Platforms.Android
             }
             else
             {
-                var androidColor = textColor.ToNative();
+                var androidColor = textColor.ToPlatform();
 
                 if (!editText.TextColors.IsOneColor(ColorStates, androidColor))
                 {
@@ -59,7 +60,7 @@ namespace CustomHandlers.Platforms.Android
             }
             else
             {
-                var androidColor = placeholderTextColor.ToNative();
+                var androidColor = placeholderTextColor.ToPlatform();
 
                 if (!editText.HintTextColors.IsOneColor(ColorExtensions.States, androidColor))
                 {
