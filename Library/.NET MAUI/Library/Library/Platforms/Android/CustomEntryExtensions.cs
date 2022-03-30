@@ -1,14 +1,13 @@
 ﻿#nullable enable
 using Android.Content.Res;
 using Android.Widget;
-using CustomHandlers.Handlers;
-using Microsoft.Maui;
+using Library.Controls;
 using Microsoft.Maui.Platform;
 using AResource = Android.Resource;
 
-namespace CustomHandlers.Platforms.Android
+namespace Library.Extensions.Android
 {
-    public static class CustomEntry
+    public static class CustomEntryExtensions
     {
         static readonly int[][] ColorStates =
         {
@@ -60,15 +59,13 @@ namespace CustomHandlers.Platforms.Android
             }
             else
             {
-                int[][] colorStates = { new[] { AResource.Attribute.StateEnabled }, new[] { -AResource.Attribute.StateEnabled } };
-
                 var androidColor = placeholderTextColor.ToPlatform();
 
-                if (!editText.HintTextColors.IsOneColor(colorStates, androidColor))
+                if (!editText.HintTextColors.IsOneColor(ColorStates, androidColor))
                 {
                     var acolor = androidColor.ToArgb();
-                    editText.SetHintTextColor(new ColorStateList(colorStates, new[] { acolor, acolor }));
-                
+                    editText.SetHintTextColor(new ColorStateList(ColorStates, new[] { acolor, acolor }));
+                }
             }
         }
 

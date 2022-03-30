@@ -1,0 +1,41 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras/2.1.2">
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;xamarinios10;monoandroid10.0;</TargetFrameworks>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<LangVersion>latest</LangVersion>
+		<DebugType>portable</DebugType>
+		<Configurations>Debug;Release</Configurations>
+		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+		<DebugType>portable</DebugType>
+		<NoWarn>NU1701</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
+		<!-- Manage TargetFrameworks for development (Debug Mode) -->
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)'=='Release' ">
+		<!-- Manage TargetFrameworks for distribution (Release Mode) -->
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="**/*.shared.cs" />
+		<Compile Include="**/*.shared.*.cs" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS'))">
+		<Compile Include="**\*.ios.cs" />
+		<Compile Include="**\*.ios.*.cs" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid'))">
+		<Compile Include="**\*.android.cs" />
+		<Compile Include="**\*.android.*.cs" />
+		<!-- Resources -->
+		<AndroidResource Include="Resources\**\*.axml" />
+		<AndroidResource Include="Resources\**\*.xml" />
+		<AndroidResource Include="Resources\**\*.png" />
+	</ItemGroup>
+</Project>

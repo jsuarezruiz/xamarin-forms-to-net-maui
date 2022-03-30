@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Library.Sample.MainPage"
+    xmlns:converters="clr-namespace:Library.Converters;assembly=Library"
+    xmlns:behaviors="clr-namespace:Library.Behaviors;assembly=Library" 
+    xmlns:effects="clr-namespace:Library.Effects;assembly=Library" 
+    xmlns:customrenderers="clr-namespace:Library.Renderers;assembly=Library"
+    xmlns:triggers="clr-namespace:Library.Triggers;assembly=Library">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <converters:IntToBoolConverter x:Key="IntToBoolConverter" />
+            
+            <Style x:Key="TitleStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="24" />
+            </Style>
+
+            <Style x:Key="HeaderStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="9" />
+            </Style>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <StackLayout
+            Padding="12">
+            <Label 
+                Text="Xamarin.Forms"
+                Style="{StaticResource TitleStyle}"/>
+            <Label
+                Text="Behaviors"
+                Style="{StaticResource TitleStyle}"/>
+            <Entry 
+                Placeholder="Enter a System.Double">
+                <Entry.Behaviors>
+                    <behaviors:NumericValidationBehavior />
+                </Entry.Behaviors>
+            </Entry>
+            <Label
+                Text="Converters"
+                Style="{StaticResource TitleStyle}"/>
+            <StackLayout 
+                Padding="10, 0">
+                <Entry 
+                x:Name="Entry1"
+                Text=""
+                Placeholder="Enter search term"
+                VerticalOptions="CenterAndExpand" />
+                <Button 
+                    Text="Search"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"
+                    IsEnabled="{Binding Source={x:Reference Entry1},
+                                        Path=Text.Length,
+                                        Converter={StaticResource IntToBoolConverter}}" />
+                <Entry 
+                    x:Name="Entry2"
+                    Text=""
+                    Placeholder="Enter destination"
+                    VerticalOptions="CenterAndExpand" />
+                <Button 
+                    Text="Submit"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"
+                    IsEnabled="{Binding Source={x:Reference Entry2},
+                                        Path=Text.Length,
+                                        Converter={StaticResource IntToBoolConverter}}" />
+            </StackLayout>
+            <Label
+                Text="Effects"
+                Style="{StaticResource TitleStyle}"/>
+            <Entry 
+            Text="Effect">
+                <Entry.Effects>
+                    <effects:FocusRoutingEffect />
+                </Entry.Effects>
+            </Entry>
+            <Label
+                Text="Renderers"
+                Style="{StaticResource TitleStyle}"/>
+            <customrenderers:CustomEntry
+                TextColor="Red"
+                Placeholder="CustomEntry"
+                PlaceholderColor="Green"/>
+            <Label
+                Text="Triggers"/>
+            <Entry>
+                <Entry.Triggers>
+                    <EventTrigger Event="Clicked">
+                        <triggers:NumericValidationTriggerAction />
+                    </EventTrigger>
+                </Entry.Triggers>
+            </Entry>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
